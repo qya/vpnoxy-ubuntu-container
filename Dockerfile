@@ -11,7 +11,7 @@ FROM ubuntu:18.04
 MAINTAINER Fais <qya[@]vivaldi.net>
 
 RUN apt-get update \
- && apt-get install -y wget iproute2 net-tools iputils-ping expect \
+ && apt-get install -y wget curl iproute2 net-tools iputils-ping expect \
  && apt-get install -y --no-install-recommends expect \
  && apt-get install -y dante-server
 
@@ -22,7 +22,7 @@ RUN wget -O purevpn_amd64.deb 'https://s3.amazonaws.com/purevpn-dialer-assets/li
 
 ADD entrypoint.sh /entrypoint.sh
 
-ADD danted.conf /etc/
+ADD danted.conf /etc/danted.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/bash"]
